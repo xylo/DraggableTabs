@@ -8,6 +8,39 @@
 	<artifactId>draggabletabs</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
+	<name>Draggable Tabs for JavaFX</name>
+	<description>A library providing draggable tabs for JavaFX.</description>
+	<url>https://github.com/xylo/DraggableTabs</url>
+
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Stefan Endrullis</name>
+			<email>stefan@endrullis.de</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:xylo/DraggableTabs.git</connection>
+		<developerConnection>scm:git:git@github.com:xylo/DraggableTabs.git</developerConnection>
+		<url>git@github.com:xylo/DraggableTabs.git</url>
+	</scm>
+
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/xylo/DraggableTabs</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/xylo/DraggableTabs/issues</url>
+	</issueManagement>
 
 	<build>
 		<plugins>
