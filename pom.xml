@@ -12,6 +12,10 @@
 	<description>A library providing draggable tabs for JavaFX.</description>
 	<url>https://github.com/xylo/DraggableTabs</url>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
