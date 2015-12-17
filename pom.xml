@@ -140,4 +140,32 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>ossrh</id>
+			<properties>
+				<gpg.executable>gpg2</gpg.executable>
+			</properties>
+			<build>
+				<plugins>
+					<!-- GPG signing -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
