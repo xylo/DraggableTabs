@@ -31,7 +31,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/xylo/DraggableTabs.git</connection>
 		<developerConnection>scm:git:https://github.com/xylo/DraggableTabs.git</developerConnection>
-		<url>scm:git:https://github.com/xylo/DraggableTabs.git</url>
+		<url>https://github.com/xylo/DraggableTabs</url>
   </scm>
 
 	<ciManagement>
