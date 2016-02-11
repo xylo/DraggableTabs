@@ -30,7 +30,7 @@ public class DraggableTab extends Tab {
 	public static final ObjectProperty<DraggableTab> draggingTab = new SimpleObjectProperty<>();
 
 	/** Factory for creating new stages with draggable tabs. */
-	protected DraggableTabStageFactory stageFactory = DraggableTabStageFactory.getDefaultFactory();
+	protected DraggableTabFactory stageFactory = DraggableTabFactory.getDefaultFactory();
 
 	/** Tab label component. */
 	protected final Label label;

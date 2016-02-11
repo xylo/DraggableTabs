@@ -38,7 +38,7 @@ public class DraggableTabUtils {
 	 */
 	public static void cleanup(DraggableTabLayoutExtender extender) {
 		Platform.runLater(() -> {
-			if (extender.getCenter() == null) {
+			if (extender.getCenter() == null && extender.getParent() != null) {
 				if (extender.getParent().getParent() == null) {
 					cleanup(extender);
 				} else {
