@@ -7,7 +7,7 @@ import com.sun.javafx.scene.traversal.Direction;
  *
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
-@SuppressWarnings("unused")
+@SuppressWarnings("WeakerAccess")
 public class DraggableTabFactory {
 
 	private static DraggableTabFactory defaultFactory = new DraggableTabFactory();

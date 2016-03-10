@@ -2,14 +2,12 @@ package de.endrullis.draggabletabs;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.event.EventHandler;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.DataFormat;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 
@@ -21,6 +19,7 @@ import java.util.Map;
  *
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
+@SuppressWarnings("WeakerAccess")
 public class DraggableTab extends Tab {
 
 	/** Data format used as the drag content of dragged tabs. */
@@ -87,19 +86,17 @@ public class DraggableTab extends Tab {
 				}
 			});
 
-			setOnDragDone(new EventHandler<DragEvent>() {
-				public void handle(DragEvent event) {
-					if (!event.isAccepted()) {
-						TabPane oldTabPane = getTabPane();
-						oldTabPane.getTabs().remove(DraggableTab.this);
+			setOnDragDone(event -> {
+				if (!event.isAccepted()) {
+					TabPane oldTabPane = getTabPane();
+					oldTabPane.getTabs().remove(DraggableTab.this);
 
-						stageFactory.createNewStage(DraggableTab.this);
+					stageFactory.createNewStage(DraggableTab.this);
 
-						DraggableTabUtils.cleanup(oldTabPane);
-					}
-					draggingTab.set(null);
-					event.consume();
+					DraggableTabUtils.cleanup(oldTabPane);
 				}
+				draggingTab.set(null);
+				event.consume();
 			});
 		}};
 

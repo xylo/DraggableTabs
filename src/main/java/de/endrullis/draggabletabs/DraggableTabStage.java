@@ -13,6 +13,7 @@ import java.awt.*;
  *
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
+@SuppressWarnings("WeakerAccess")
 public class DraggableTabStage extends Stage {
 
 	/**

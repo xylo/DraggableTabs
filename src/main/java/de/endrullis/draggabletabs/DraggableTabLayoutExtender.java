@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
  *
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
+@SuppressWarnings("WeakerAccess")
 public class DraggableTabLayoutExtender extends BorderPane {
 
 	public static int EXTENDER_SIZE = 20;

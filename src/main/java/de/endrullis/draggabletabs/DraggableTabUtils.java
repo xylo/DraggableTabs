@@ -11,6 +11,7 @@ import javafx.scene.control.TabPane;
  *
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
+@SuppressWarnings("WeakerAccess")
 public class DraggableTabUtils {
 
 	/**

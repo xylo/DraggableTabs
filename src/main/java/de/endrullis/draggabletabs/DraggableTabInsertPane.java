@@ -14,8 +14,11 @@ import static de.endrullis.draggabletabs.DraggableTab.isDraggingTab;
 import static de.endrullis.draggabletabs.DraggableTabUtils.rearrangeDividers;
 
 /**
+ * Pane used as placeholder for dragging tabs onto.
+ *
  * @author Stefan Endrullis (endrullis@iat.uni-leipzig.de)
  */
+@SuppressWarnings("WeakerAccess")
 public class DraggableTabInsertPane extends StackPane {
 	protected final DraggableTabLayoutExtender draggableTabLayoutExtender;
 	protected final Direction                  direction;

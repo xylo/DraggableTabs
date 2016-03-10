@@ -11,6 +11,7 @@ import static de.endrullis.draggabletabs.DraggableTab.isDraggingTab;
  *
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
+@SuppressWarnings("WeakerAccess")
 public class DraggableTabPane extends TabPane {
 
 	public DraggableTabPane() {
