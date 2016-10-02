@@ -1,7 +1,11 @@
 package de.endrullis.draggabletabs;
 
 import com.sun.javafx.scene.traversal.Direction;
+import javafx.beans.DefaultProperty;
+import javafx.beans.NamedArg;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -11,9 +15,11 @@ import javafx.scene.layout.BorderPane;
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
 @SuppressWarnings("WeakerAccess")
+@DefaultProperty("center")
 public class DraggableTabLayoutExtender extends BorderPane {
 
 	public static int EXTENDER_SIZE = 20;
+	private final ChangeListener<DraggableTab> draggingTabListener;
 
 	/** Tab that was dragged last. */
 	private DraggableTab lastDraggingTab = null;
@@ -23,15 +29,15 @@ public class DraggableTabLayoutExtender extends BorderPane {
 	 *
 	 * @param component component that shall be wrapped
 	 */
-	public DraggableTabLayoutExtender(Node component) {
+	public DraggableTabLayoutExtender(@NamedArg("center") Node component) {
 		super(component);
 
 		// offer drop areas in all directions when user is dragging a tab
-		DraggableTab.draggingTab.addListener((observable, oldTab, newTab) -> {
+		draggingTabListener = (observable, oldTab, newTab) -> {
 			if (lastDraggingTab != newTab) {
 				lastDraggingTab = newTab;
 
-				if (newTab != null) {
+				if (!(getParent().getParent() instanceof SplitPane && getCenter() instanceof SplitPane) && newTab != null) {
 					DraggableTabFactory factory = DraggableTabFactory.getDefaultFactory();
 					setTop(factory.createInsertPane(this, Direction.UP));
 					setBottom(factory.createInsertPane(this, Direction.DOWN));
@@ -44,7 +50,14 @@ public class DraggableTabLayoutExtender extends BorderPane {
 					setRight(null);
 				}
 			}
-		});
+		};
+		DraggableTab.draggingTab.addListener(draggingTabListener);
 	}
 
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+
+		DraggableTab.draggingTab.removeListener(draggingTabListener);
+	}
 }
