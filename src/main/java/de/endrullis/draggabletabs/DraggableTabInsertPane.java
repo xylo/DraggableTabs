@@ -77,6 +77,27 @@ public class DraggableTabInsertPane extends StackPane {
 
 			int index = splitPane.getItems().indexOf(draggableTabLayoutExtender);
 
+			Orientation insertOrientation = direction == Direction.UP || direction == Direction.DOWN ? Orientation.VERTICAL : Orientation.HORIZONTAL;
+
+			if (splitPane.getOrientation() != insertOrientation) {
+
+				Node center = draggableTabLayoutExtender.getCenter();
+
+				if (center instanceof SplitPane) {
+					SplitPane pane = (SplitPane) center;
+
+					if (pane.getOrientation() == insertOrientation) {
+						splitPane = pane;
+
+						if (direction == Direction.UP || direction == Direction.LEFT) {
+							index = 0;
+						} else {
+							index = pane.getItems().size();
+						}
+					}
+				}
+			}
+
 			if (splitPane.getOrientation() == Orientation.VERTICAL) {
 				switch (direction) {
 					case UP:
