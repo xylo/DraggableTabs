@@ -4,7 +4,7 @@
 
 	<groupId>de.endrullis.draggabletabs</groupId>
 	<artifactId>draggabletabs</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 
 	<name>Draggable Tabs for JavaFX</name>
 	<description>A library providing draggable tabs for JavaFX.</description>
