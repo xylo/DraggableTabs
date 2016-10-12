@@ -38,7 +38,7 @@ public class DraggableTabLayoutExtender extends BorderPane {
 				lastDraggingTab = newTab;
 
 				if (!(getParent().getParent() instanceof SplitPane && getCenter() instanceof SplitPane) && newTab != null) {
-					DraggableTabFactory factory = DraggableTabFactory.getDefaultFactory();
+					DraggableTabFactory factory = DraggableTabFactory.getFactory();
 					setTop(factory.createInsertPane(this, Direction.UP));
 					setBottom(factory.createInsertPane(this, Direction.DOWN));
 					setLeft(factory.createInsertPane(this, Direction.LEFT));

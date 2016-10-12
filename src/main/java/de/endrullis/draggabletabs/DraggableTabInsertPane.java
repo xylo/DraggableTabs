@@ -5,7 +5,6 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.StackPane;
@@ -54,11 +53,11 @@ public class DraggableTabInsertPane extends StackPane {
 
 		setOnDragDropped(event -> {
 			if (isDraggingTab(event.getDragboard())) {
-				final Tab tab = DraggableTab.draggingTab.get();
+				final DraggableTab tab = DraggableTab.draggingTab.get();
 				TabPane oldTabPane = tab.getTabPane();
 				oldTabPane.getTabs().remove(tab);
 
-				DraggableTabLayoutExtender sourceDraggableTabLayoutExtender = new DraggableTabLayoutExtender(new DraggableTabPane(tab));
+				DraggableTabLayoutExtender sourceDraggableTabLayoutExtender = DraggableTabFactory.getFactory().wrapTab(tab);
 
 				addComponent(draggableTabLayoutExtender.getParent(), sourceDraggableTabLayoutExtender);
 
@@ -143,7 +142,7 @@ public class DraggableTabInsertPane extends StackPane {
 
 		newSplitPane.getItems().addAll(firstComponent, secondComponent);
 
-		insertInto(parent, index, new DraggableTabLayoutExtender(newSplitPane));
+		insertInto(parent, index, DraggableTabFactory.getFactory().createLayoutExtender(newSplitPane));
 	}
 
 	protected void insertInto(SplitPane parent, int index, Node component) {

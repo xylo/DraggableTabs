@@ -19,7 +19,7 @@ import java.util.Map;
  *
  * @author Stefan Endrullis (stefan@endrullis.de)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class DraggableTab extends Tab {
 
 	/** Data format used as the drag content of dragged tabs. */
@@ -29,7 +29,7 @@ public class DraggableTab extends Tab {
 	public static final ObjectProperty<DraggableTab> draggingTab = new SimpleObjectProperty<>();
 
 	/** Factory for creating new stages with draggable tabs. */
-	protected DraggableTabFactory stageFactory = DraggableTabFactory.getDefaultFactory();
+	protected DraggableTabFactory stageFactory = DraggableTabFactory.getFactory();
 
 	/** Tab label component. */
 	protected final Label label;

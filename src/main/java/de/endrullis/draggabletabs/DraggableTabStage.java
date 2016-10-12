@@ -25,7 +25,7 @@ public class DraggableTabStage extends Stage {
 		setTitle(tab.getTitle());
 
 		SplitPane splitPane = new SplitPane() {{
-			getItems().add(new DraggableTabLayoutExtender(new DraggableTabPane(tab)));
+			getItems().add(DraggableTabFactory.getFactory().wrapTab(tab));
 
 			// close window automatically when last tab gets removed
 			getItems().addListener((InvalidationListener) observable -> {
