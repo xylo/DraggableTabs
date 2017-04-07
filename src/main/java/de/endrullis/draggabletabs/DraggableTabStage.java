@@ -16,37 +16,37 @@ import java.awt.*;
 @SuppressWarnings("WeakerAccess")
 public class DraggableTabStage extends Stage {
 
+	public DraggableTabStage(SplitPane splitPane) {
+		// close window automatically when last tab gets removed
+		splitPane.getItems().addListener((InvalidationListener) observable -> {
+			Platform.runLater(() -> {
+				if (splitPane.getItems().isEmpty()) {
+					close();
+				}
+			});
+		});
+
+		Scene scene = new Scene(splitPane);
+
+		setScene(scene);
+
+		// place window centered under the cursor
+		Point p = MouseInfo.getPointerInfo().getLocation();
+		setX(p.x - scene.getWidth() / 2);
+		setY(p.y);
+	}
+
 	/**
 	 * Creates a new stage with a split pane, a tab pane and the given tab.
 	 *
 	 * @param tab tab to be added to the new stage
 	 */
 	public DraggableTabStage(DraggableTab tab) {
-		setTitle(tab.getTitle());
-
-		SplitPane splitPane = new SplitPane() {{
+		this(new SplitPane() {{
 			getItems().add(DraggableTabFactory.getFactory().wrapTab(tab));
+		}});
 
-			// close window automatically when last tab gets removed
-			getItems().addListener((InvalidationListener) observable -> {
-				Platform.runLater(() -> {
-					if (getItems().isEmpty()) {
-						close();
-					}
-				});
-			});
-		}};
-
-		Scene scene = new Scene(splitPane);
-
-		setScene(scene);
-
-		show();
-
-		// place window centered under the cursor
-		Point p = MouseInfo.getPointerInfo().getLocation();
-		setX(p.x - scene.getWidth() / 2);
-		setY(p.y);
+		setTitle(tab.getTitle());
 	}
 
 }

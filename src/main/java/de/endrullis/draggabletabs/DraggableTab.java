@@ -34,6 +34,9 @@ public class DraggableTab extends Tab {
 	/** Tab label component. */
 	protected final Label label;
 
+	/** The TabPane to which this Tab was added last. */
+	protected TabPane lastTabPane;
+
 	/**
 	 * Creates a draggable tab with the given title.
 	 *
@@ -91,7 +94,7 @@ public class DraggableTab extends Tab {
 					TabPane oldTabPane = getTabPane();
 					oldTabPane.getTabs().remove(DraggableTab.this);
 
-					stageFactory.createNewStage(DraggableTab.this);
+					stageFactory.createNewStage(DraggableTab.this).show();
 
 					DraggableTabUtils.cleanup(oldTabPane);
 				}
@@ -99,6 +102,13 @@ public class DraggableTab extends Tab {
 				event.consume();
 			});
 		}};
+
+		tabPaneProperty().addListener((observable, oldValue, newValue) -> {
+			lastTabPane = newValue;
+		});
+		setOnCloseRequest(event -> {
+			DraggableTabUtils.cleanup(lastTabPane);
+		});
 
 		setGraphic(label);
 	}
