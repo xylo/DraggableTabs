@@ -4,7 +4,7 @@
 
 	<groupId>de.endrullis.draggabletabs</groupId>
 	<artifactId>draggabletabs</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 
 	<name>Draggable Tabs for JavaFX</name>
 	<description>A library providing draggable tabs for JavaFX.</description>
@@ -33,7 +33,7 @@
 		<connection>scm:git:https://github.com/xylo/DraggableTabs.git</connection>
 		<developerConnection>scm:git:https://github.com/xylo/DraggableTabs.git</developerConnection>
 		<url>https://github.com/xylo/DraggableTabs</url>
-		<tag>HEAD</tag>
+		<tag>draggabletabs-1.0.2</tag>
 	</scm>
 
 	<ciManagement>
