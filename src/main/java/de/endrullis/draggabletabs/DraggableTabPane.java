@@ -37,7 +37,7 @@ public class DraggableTabPane extends TabPane {
 			if (isDraggingTab(event.getDragboard())) {
 				final Tab tab = DraggableTab.draggingTab.get();
 
-				if (!isParentFrom(this, tab.getContent())) {
+				if (!isParentOf(this, tab.getContent())) {
 					TabPane oldTabPane = tab.getTabPane();
 					oldTabPane.getTabs().remove(tab);
 
@@ -54,7 +54,14 @@ public class DraggableTabPane extends TabPane {
 		});
 	}
 
-	public boolean isParentFrom(Node child, Node parent) {
+	/**
+	 * Returns true if {@code child} node is a direct or indirect parent of {@code parent}.
+	 *
+	 * @param child  child node
+	 * @param parent parent node
+	 * @return true if {@code child} node is a direct or indirect parent of {@code parent}
+	 */
+	public boolean isParentOf(Node child, Node parent) {
 		Node node = child;
 
 		while (node.getParent() != null) {
