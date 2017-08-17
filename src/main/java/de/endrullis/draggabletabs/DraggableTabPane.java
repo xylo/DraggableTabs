@@ -1,5 +1,6 @@
 package de.endrullis.draggabletabs;
 
+import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.TransferMode;
@@ -35,19 +36,36 @@ public class DraggableTabPane extends TabPane {
 		setOnDragDropped(event -> {
 			if (isDraggingTab(event.getDragboard())) {
 				final Tab tab = DraggableTab.draggingTab.get();
-				TabPane oldTabPane = tab.getTabPane();
-				oldTabPane.getTabs().remove(tab);
 
-				getTabs().add(tab);
-				getSelectionModel().select(tab);
+				if (!isParentFrom(this, tab.getContent())) {
+					TabPane oldTabPane = tab.getTabPane();
+					oldTabPane.getTabs().remove(tab);
 
-				DraggableTabUtils.cleanup(oldTabPane);
+					getTabs().add(tab);
+					getSelectionModel().select(tab);
 
-				DraggableTab.draggingTab.set(null);
+					DraggableTabUtils.cleanup(oldTabPane);
+
+					DraggableTab.draggingTab.set(null);
+				}
 				event.setDropCompleted(true);
 				event.consume();
 			}
 		});
+	}
+
+	public boolean isParentFrom(Node child, Node parent) {
+		Node node = child;
+
+		while (node.getParent() != null) {
+			node = node.getParent();
+
+			if (parent == node) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
