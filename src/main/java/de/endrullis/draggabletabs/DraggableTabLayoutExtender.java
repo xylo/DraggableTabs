@@ -1,11 +1,11 @@
 package de.endrullis.draggabletabs;
 
-import com.sun.javafx.scene.traversal.Direction;
 import javafx.beans.DefaultProperty;
 import javafx.beans.NamedArg;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.skin.TextInputControlSkin.Direction;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -18,7 +18,7 @@ import javafx.scene.layout.BorderPane;
 @DefaultProperty("center")
 public class DraggableTabLayoutExtender extends BorderPane {
 
-	public static int EXTENDER_SIZE = 20;
+	public static int                          EXTENDER_SIZE = 20;
 	private final ChangeListener<DraggableTab> draggingTabListener;
 
 	/** Tab that was dragged last. */
@@ -36,6 +36,10 @@ public class DraggableTabLayoutExtender extends BorderPane {
 		draggingTabListener = (observable, oldTab, newTab) -> {
 			if (lastDraggingTab != newTab) {
 				lastDraggingTab = newTab;
+
+				if (getParent() == null) {
+					return;
+				}
 
 				if (!(getParent().getParent() instanceof SplitPane && getCenter() instanceof SplitPane) && newTab != null) {
 					DraggableTabFactory factory = DraggableTabFactory.getFactory();

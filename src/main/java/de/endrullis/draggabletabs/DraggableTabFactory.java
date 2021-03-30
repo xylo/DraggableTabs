@@ -1,6 +1,6 @@
 package de.endrullis.draggabletabs;
 
-import com.sun.javafx.scene.traversal.Direction;
+import javafx.scene.control.skin.TextInputControlSkin.Direction;
 import javafx.scene.Node;
 
 /**

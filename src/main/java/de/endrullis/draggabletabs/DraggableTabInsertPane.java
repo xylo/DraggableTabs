@@ -1,11 +1,11 @@
 package de.endrullis.draggabletabs;
 
-import com.sun.javafx.scene.traversal.Direction;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.skin.TextInputControlSkin.Direction;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.StackPane;
 
@@ -53,8 +53,8 @@ public class DraggableTabInsertPane extends StackPane {
 
 		setOnDragDropped(event -> {
 			if (isDraggingTab(event.getDragboard())) {
-				final DraggableTab tab = DraggableTab.draggingTab.get();
-				TabPane oldTabPane = tab.getTabPane();
+				final DraggableTab tab        = DraggableTab.draggingTab.get();
+				TabPane            oldTabPane = tab.getTabPane();
 				oldTabPane.getTabs().remove(tab);
 
 				DraggableTabLayoutExtender sourceDraggableTabLayoutExtender = DraggableTabFactory.getFactory().wrapTab(tab);
