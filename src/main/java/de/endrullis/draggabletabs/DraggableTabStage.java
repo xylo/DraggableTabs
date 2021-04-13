@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
-
 /**
  * Stage containing an extensible SplitPane with DraggableTabPane.
  *
@@ -29,11 +27,6 @@ public class DraggableTabStage extends Stage {
 		Scene scene = new Scene(splitPane);
 
 		setScene(scene);
-
-		// place window centered under the cursor
-		Point p = MouseInfo.getPointerInfo().getLocation();
-		setX(p.x - scene.getWidth() / 2);
-		setY(p.y);
 	}
 
 	/**

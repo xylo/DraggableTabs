@@ -94,7 +94,9 @@ public class DraggableTab extends Tab {
 					TabPane oldTabPane = getTabPane();
 					oldTabPane.getTabs().remove(DraggableTab.this);
 
-					stageFactory.createNewStage(DraggableTab.this).show();
+					DraggableTabStage newStage = stageFactory.createNewStage(DraggableTab.this);
+					newStage.show();
+					DraggableTabUtils.centerStageUnderMouseCursor(newStage);
 
 					DraggableTabUtils.cleanup(oldTabPane);
 				}

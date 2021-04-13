@@ -5,6 +5,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
+import javafx.stage.Stage;
+
+import java.awt.*;
 
 /**
  * Utilities for the DraggableTab classes.
@@ -99,6 +102,13 @@ public class DraggableTabUtils {
 			}
 			splitPane.setDividerPositions(dividerPositions);
 		}
+	}
+
+	public static void centerStageUnderMouseCursor(Stage stage) {
+		// place window centered under the cursor
+		Point p = MouseInfo.getPointerInfo().getLocation();
+		stage.setX(p.x / stage.getRenderScaleX() - stage.getScene().getWidth() / 2);
+		stage.setY(p.y / stage.getRenderScaleY());
 	}
 
 }
